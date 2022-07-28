@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   window.addEventListener("beforeinstallprompt", (ev) => {
-    console.log("beforeinstallprompt");
+    console.log("beforeinstallprompt", ev);
   });
   return (
     <div className="App">
