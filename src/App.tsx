@@ -5,29 +5,30 @@ import "./App.css";
 
 function App() {
   const [isShowBtn, setIsShowBtn] = useState<boolean>(true);
+  const [event, setEvent] = useState<Event | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const deferredInstall = useRef<Event | null>(null);
   useEffect(() => {
     console.log("useEffect");
     window.addEventListener("beforeinstallprompt", (event) => {
-      deferredInstall.current = event;
+      // deferredInstall.current = event;
       console.log("beforeinstallprompt app", event);
     });
   }, []);
 
   const handleButtonClick = () => {
     setIsShowBtn(false);
-    if (deferredInstall.current) {
-      console.log("evt handleButtonClick", deferredInstall.current);
-      deferredInstall.current.prompt();
-      deferredInstall.current.userChoice.then((choice) => {
-        if (choice.outcome === "accepted") {
-          console.log("installed");
-        } else {
-          console.log("cancel");
-        }
-      });
-    }
+    // if (deferredInstall.current) {
+    //   console.log("evt handleButtonClick", deferredInstall.current);
+    //   deferredInstall.current.prompt();
+    //   deferredInstall.current.userChoice.then((choice) => {
+    //     if (choice.outcome === "accepted") {
+    //       console.log("installed");
+    //     } else {
+    //       console.log("cancel");
+    //     }
+    //   });
+    // }
   };
   return (
     <div className="App">
@@ -40,7 +41,7 @@ function App() {
             ref={buttonRef}
             onClick={handleButtonClick}
           >
-            install app 4
+            install app 5
           </button>
         )}
       </header>
